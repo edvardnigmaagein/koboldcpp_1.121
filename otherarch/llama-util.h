@@ -271,33 +271,13 @@ struct llama_v3_mmap {
             throw std::runtime_error(format_old("MapViewOfFile failed: %s", llama_v3_format_win_err(error).c_str()));
         }
 
-        #ifndef USE_FAILSAFE
-        if (prefetch) {
-            // The PrefetchVirtualMemory API is only present on Windows 8 and above, so we
-            // will dynamically load it using GetProcAddress.
-            BOOL (WINAPI *pPrefetchVirtualMemory) (HANDLE, ULONG_PTR, PWIN32_MEMORY_RANGE_ENTRY, ULONG);
-            HMODULE hKernel32;
-
-            // This call is guaranteed to succeed.
-            hKernel32 = GetModuleHandleW(L"kernel32.dll");
-
-            // This call may fail if on a pre-Win8 system.
-            pPrefetchVirtualMemory = reinterpret_cast<decltype(pPrefetchVirtualMemory)> (GetProcAddress(hKernel32, "PrefetchVirtualMemory"));
-
-            if (pPrefetchVirtualMemory) {
-                // Advise the kernel to preload the mapped memory.
-                WIN32_MEMORY_RANGE_ENTRY range;
-                range.VirtualAddress = addr;
-                range.NumberOfBytes = (SIZE_T)size;
-                if (!pPrefetchVirtualMemory(GetCurrentProcess(), 1, &range, 0)) {
-                    fprintf(stderr, "warning: PrefetchVirtualMemory failed: %s\n",
-                            llama_v3_format_win_err(GetLastError()).c_str());
-                }
-            }
-        }
-        #else
-        printf("\nPrefetchVirtualMemory skipped in compatibility mode.\n");
-        #endif
+#ifndef USE_FAILSAFE
+    if (prefetch > 0) {
+        (void)0;
+    }
+#else
+    printf("\nPrefetchVirtualMemory skipped in compatibility mode.\n");
+#endif
     }
 
     ~llama_v3_mmap() {
