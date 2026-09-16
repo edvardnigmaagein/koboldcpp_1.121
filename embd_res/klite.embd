@@ -34304,5 +34304,397 @@ Current version indicated by LITEVER below.
 		console.log("service workers API not available");
 	}
 	</script>
+<!-- BEGIN RUSSIAN TRANSLATION -->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // Словарь: "английский текст" -> "русский перевод"
+    const helpTextTranslations = {
+"Story Mode is best for novel-style writing. Adventure Mode is best for Interactive Fiction RPGs. Chat Mode is best for chat conversations with the AI. Instruct mode is for giving the AI ChatGPT-styled tasks.": "Режим истории лучше всего подходит для написания в стиле романа. Режим приключения лучше всего подходит для интерактивных художественных RPG. Режим чата лучше всего подходит для чат-переписок с ИИ. Режим инструкций предназначен для постановки задач ИИ в стиле ChatGPT.",
+
+"Allows using separate Instruction and Response End Tags, instead of combining them with the start tag. Don't change this halfway through a story!": "Позволяет использовать отдельные теги конца инструкции и ответа вместо их объединения с начальным тегом. Не меняй это на середине истории!",
+
+"Allows the UI to use Markdown formatting, such as quotes and code blocks.": "Позволяет интерфейсу использовать форматирование Markdown, такое как цитаты и блоки кода.",
+
+"Controls whether user and AI nametags are shown or hidden. Recommended.": "Управляет тем, отображаются или скрываются имена пользователя и ИИ. Рекомендуется.",
+
+"If set above 0, will limit the number of text characters rendered to display. (Any earlier text will still be submitted but stay hidden.)": "Если установлено выше 0, будет ограничивать количество символов текста, отрисовываемых для отображения. (Любой более ранний текст все равно будет отправлен, но останется скрытым.)",
+
+"Send all extra non-standard samplers (e.g Min-P, Top-K, Top-A, TFS). May be rejected by many endpoints.": "Отправить все дополнительные нестандартные семплеры (например, Min-P, Top-K, Top-A, TFS). Может быть отклонено многими эндпоинтами.",
+
+"If set, restricts thinking length to this many tokens before forcing a reply.": "Если установлено, ограничивает длину размышлений этим количеством токенов перед принудительным ответом.",
+
+"Define custom parameters to send along with all generation payloads. Advanced users only.": "Определите пользовательские параметры для отправки вместе со всеми полезными нагрузками генерации. Только для продвинутых пользователей.",
+
+"The name the AI will see you as": "Имя, под которым ИИ будет вас видеть",
+
+"Name of the person(s) you want to chat with. Multiple opponents can be specified, creating a group chat, separate their names using multiple lines.": "Имя человека(ей), с которыми вы хотите общаться. Можно указать нескольких оппонентов, создавая групповой чат; разделяйте их имена несколькими строками.",
+
+"Modifies the context, injecting extra tokens to improve chat quality for new chats.": "Модифицирует контекст, внедряя дополнительные токены для улучшения качества чата в новых чатах.",
+
+"In Chat Mode, try to match formatting against any detected name, instead of only directly specified chat names. Does not apply to instruct mode.": "В режиме Чата пытается сопоставить форматирование с любым обнаруженным именем, а не только с напрямую указанными именами чата. Не применяется к режиму инструкций.",
+
+"Modifies the context, injecting tokens to improve adventure quality for new adventures.": "Модифицирует контекст, внедряя токены для улучшения качества приключений в новых приключениях.",
+
+"Adds an integer modifier to adventure mode dice rolls.": "Добавляет целочисленный модификатор к броскам кубиков в режиме приключений.",
+
+"If you want multiple sequences, separate them with the following delimiter: ||$||": "Если вам нужно несколько последовательностей, разделяйте их следующим разделителем: ||$||",
+
+"Put the information you want the AI to always remember. It will be inserted into the top of every request sent to the AI. Placeholder tags can be used.": "Поместите сюда информацию, которую ИИ должен помнить всегда. Она будет вставляться в начало каждого запроса, отправляемого ИИ. Можно использовать теги-плейсхолдеры.",
+
+"Similar to Memory, but inserted near the end of the text instead of the start. A good way to control the mood/behavior of the AI.": "Похоже на Memory, но вставляется ближе к концу текста, а не в начало. Хороший способ управлять настроением или поведением ИИ.",
+
+"A placeholder, will be inserted with the author's note replacing the <|>. You generally don't need to change this.": "Плейсхолдер, который будет вставлен вместе с заметкой автора, заменяя <|>. Обычно вам не нужно это менять.",
+
+"Controls how far back to insert the Author's Note. Notes injected closer to the end have a stronger effect.": "Управляет тем, насколько глубоко в текст будет вставляться заметка автора. Заметки, добавленные ближе к концу, имеют более сильный эффект.",
+
+"WorldInfo Groups can be used to segment data, e.g. entries for a specific place, person or event. Each entire group can be toggled on/off on demand.": "Группы WorldInfo можно использовать для сегментации данных, например, записей для конкретного места, человека или события. Каждую группу целиком можно включать/выключать по требованию.",
+
+"Controls where the world info should be inserted": "Управляет тем, куда должна быть вставлена информация о мире.",
+
+"Controls how far back in the text to search for World Info Keys": "Управляет тем, как далеко в тексте искать ключи World Info.",
+
+"Controls whether the world info keys are matched in a case-sensitive way.": "Управляет тем, будет ли поиск ключей World Info учитывать регистр букв.",
+
+"Disabled does not use TextDB. Local TextDB does all searches directly in browser with strings. KoboldCpp Embeddings relies on a loaded Kcpp Embeddings model to generate embeddings. OpenAI Embeddings uses a remote OpenAI API to generate embeddings.": "Если отключено, TextDB не используется. Local TextDB выполняет все поиски прямо в браузере с помощью строк. KoboldCpp Embeddings полагается на загруженную модель Kcpp Embeddings для генерации эмбеддингов. OpenAI Embeddings использует удаленный API OpenAI для генерации эмбеддингов.",
+
+"When embeddings are enabled, they get generated by the KCPP server and then are cached in the web browser. This button clears the browser cache.": "Когда эмбеддинги включены, они генерируются сервером KCPP, а затем кэшируются в веб-браузере. Эта кнопка очищает кэш браузера.",
+
+"Tries to extract the text from the document, adding (or overwriting) an existing document in the TextDB with the same name.": "Пытается извлечь текст из документа, добавляя (или перезаписывая) существующий документ в TextDB с тем же именем.",
+
+"If enabled, the entire story/chat history is used as a searchable document.": "Если включено, вся история истории/чата используется как документ для поиска.",
+
+"Controls how many search results to retrieve from DB. Each search result is added to the context as a snippet of the DB document.": "Управляет количеством результатов поиска, извлекаемых из БД. Каждый результат добавляется в контекст в виде фрагмента документа БД.",
+
+"Adds the specified amount of characters from the context before the last user message to the search query.": "Добавляет указанное количество символов из контекста перед последним сообщением пользователя в поисковый запрос.",
+
+"Controls the size (in characters) of each snippet taken from the documents.": "Управляет размером (в символах) каждого фрагмента, взятого из документов.",
+
+"Paste as much raw text data here as you like. E.g. background information, reference documents, etc. This text will populate the database that will be chunked and searched by TextDB. This can be split using \"[DOCUMENT BREAK]\" to split the overall database into smaller documents, and titles can be added with \"[DOCUMENT BREAK][Title of document]This is the content of the document\".": "Вставьте сюда столько необработанных текстовых данных, сколько захотите. Например, фоновую информацию, справочные документы и т. д. Этот текст наполнит базу данных, которая будет разбита на части и проиндексирована TextDB. Это можно разделить с помощью \"[DOCUMENT BREAK]\", чтобы разбить общую базу данных на более мелкие документы, а заголовки можно добавить с помощью \"[DOCUMENT BREAK][Название документа]Это содержимое документа\".",
+
+"Use the AI Horde or a local KoboldCpp / Forge / A1111 instance to insert AI generated images into your story.": "Используйте AI Horde или локальный экземпляр KoboldCpp / Forge / A1111 для вставки сгенерированных изображений в вашу историю.",
+
+"Story Mode is best for novel style writing. Adventure Mode is best for Interactive Fiction RPGs. Chat Mode is best for chat conversations with the AI. Instruct mode is for giving the AI ChatGPT styled tasks.": "Режим Истории лучше всего подходит для написания текстов в стиле романа. Режим Приключения лучше всего подходит для интерактивной литературы и RPG. Режим Чата лучше всего подходит для диалогов с ИИ. Режим Инструкций предназначен для постановки задач ИИ в стиле ChatGPT.",
+
+"Quickly select between common instruct tag formats. Different models are trained with different tags.": "Быстро выбирай между распространенными форматами тегов инструкций. Разные модели обучаются с разными тегами.",
+
+"The sequence to start the system prompt": "Последовательность для начала системного промпта",
+
+"A fixed system message sent at the very start to guide the AI behavior. Usually NOT needed": "Фиксированное системное сообщение, отправляемое в самом начале для управления поведением ИИ. Обычно НЕ требуется",
+
+"The sequence to start an instruction prompt": "Последовательность для начала промпта инструкции",
+
+"The sequence to start an assistant response": "Последовательность для начала ответа ассистента",
+
+"The sequence used to start the final turn of an assistant response. Leave blank if unsure": "Последовательность, используемая для начала финального хода ответа ассистента. Оставьте пустой, если не уверены",
+
+"Allows using separate Instruction and Response End Tags, instead of combing them with the start tag. Don't change this halfway through a story!": "Позволяет использовать отдельные теги конца инструкции и ответа вместо их объединения с начальным тегом. Не меняйте это на середине истории!",
+
+"Automatically injects a jailbreak message after every instruct query, to make the AI more likely to obey you.": "Автоматически внедряет джейлбрейк-сообщение после каждого запроса инструкции, чтобы повысить вероятность того, что ИИ будет вам подчиняться.",
+
+"Appends chat names after every instruct tag, a hybrid chat mode.": "Добавляет имена участников чата после каждого тега инструкции — гибридный режим чата.",
+
+"Use token streaming for partial responses. SSE is recommended.": "Используй потоковую передачу токенов для частичных ответов. Рекомендуется SSE.",
+
+"In instruct mode, allows the AI to continue generating the user's turn when pressing Generate More.": "В режиме инструкций позволяет ИИ продолжать генерацию хода пользователя при нажатии Generate More.",
+
+"Allow the AI to continue incomplete past responses, which can be extended by pressing submit again. Not recommended for newbies.": "Позволяет ИИ продолжать незавершенные прошлые ответы, которые можно продлить повторным нажатием кнопки отправки. Не рекомендуется новичкам.",
+
+"Whether to allow multiple lines in AI responses (Chat/Adventure). Disable this if the AI starts generating rubbish.": "Разрешать ли несколько строк в ответах ИИ (Чат/Приключение). Отключите это, если ИИ начнет генерировать мусор.",
+
+"Allow the AI to send more responses over time if you are idle.": "Позволяет ИИ со временем отправлять больше ответов, если вы бездействуете.",
+
+"Pressing the Enter button submits text instead of adding a newline": "Нажатие клавиши Enter отправляет текст вместо добавления новой строки",
+
+"Trims incomplete sentences in AI output.": "Обрезает незавершенные предложения в выводе ИИ.",
+
+"Removes trailing whitespace in AI output.": "Удаляет лишние пробелы в конце вывода ИИ.",
+
+"Compresses multiple newlines into one newline in AI output.": "Сжимает несколько переносов строк в один перенос строки в выводе ИИ.",
+
+"Avoids escaping any HTML tags, allowing HTML injections. Not recommended!": "Избегает экранирования любых HTML-тегов, позволяя HTML-инъекции. Не рекомендуется!",
+
+"Injects timestamps into context (Chat/Instruct), allowing the AI to have a sense of time.": "Внедряет временные метки в контекст (Чат/Инструкция), позволяя ИИ чувствовать время.",
+
+"Prevents leaking when Alpaca instruct format is used on models trained with bad/different formats.": "Предотвращает утечку, когда формат инструкций Alpaca используется на моделях, обученных с плохими или другими форматами.",
+
+// GUI
+
+"Select your preferred UI style, which affects text formatting and display. Some UIs are only available for specific modes.": "Выбери предпочитаемый стиль интерфейса, который влияет на форматирование и отображение текста. Некоторые интерфейсы доступны только для определенных режимов.",
+
+"Set UI color scheme. Does not apply to corpo mode.": "Установить цветовую схему интерфейса. Не применяется в корпоративном режиме.",
+
+"Allows the UI to use markdown formatting such as quotes and code blocks.": "Позволяет интерфейсу использовать форматирование markdown, такое как цитаты и блоки кода.",
+
+"Attempt to render Markdown when streaming. May result in wonky output or lag on older devices.": "Попытка рендерить markdown во время потоковой передачи. Может привести к кривому выводу или задержкам на старых устройствах.",
+
+"Allows the UI to render LaTeX within Markdown formatting (Needs Markdown).": "Позволяет интерфейсу отображать LaTeX внутри форматирования markdown (требуется Markdown).",
+
+"Controls if user and AI nametags are shown or hidden. Recommended.": "Управляет тем, отображаются или скрываются имена пользователя и ИИ. Рекомендуется.",
+
+"Automatically scrolls the text window down when new text is generated": "Автоматически прокручивает текстовое окно вниз при генерации нового текста.",
+
+"Controls horizontal scaling of the viewport window": "Управляет горизонтальным масштабированием окна просмотра.",
+
+"Unlocks the text viewport, allowing for infinite height without scrolling": "Разблокирует окно просмотра текста, позволяя бесконечную высоту без прокрутки.",
+
+"If set above 0, will limit the number of text characters rendered to display (any earlier text will still be submitted but stay hidden).": "Если установлено выше 0, ограничит количество отрисовываемых символов текста (любой предыдущий текст все равно будет отправляться, но останется скрытым).",
+
+"Set an image as a decorative background. Stored locally.": "Устанавливает изображение в качестве декоративного фона. Хранится локально.",
+
+"Inverts all colors, simple light mode": "Инвертирует все цвета, простой светлый режим.",
+
+"Displays the settings and context panels permanently on the sides, instead of as popups. Not available on Mobile displays.": "Постоянно отображает панели настроек и контекста по бокам вместо всплывающих окон. Недоступно на мобильных дисплеях.",
+
+"Shows a tool that displays word frequency and locations, inspired by trincadev MyGhostWriter. Counts across newlines may be inaccurate.": "Показывает инструмент, отображающий частоту и расположение слов, вдохновленный trincadev MyGhostWriter. Подсчет через переносы строк может быть неточным.",
+
+"Allows you to load third-party CSS styles (caution).": "Позволяет загружать сторонние CSS-стили (осторожно).",
+
+"Attempts to switch to fullscreen mode. This setting cannot be saved.": "Пытается переключиться в полноэкранный режим. Этот параметр нельзя сохранить.",
+
+// Samplers
+
+"Maximum number of context tokens submitted to the AI. Must exceed max output tokens. Can be further increased by editing the textbox. This value determines how much history text the AI remembers.": "Максимальное количество токенов контекста, отправляемых ИИ. Должно превышать максимальное количество выходных токенов. Может быть дополнительно увеличено путем редактирования текстового поля. Это значение определяет, какой объем текста истории помнит ИИ.",
+
+"Maximum number of tokens the AI should generate. Higher numbers will take longer to generate. AI can stop before the limit.": "Максимальное количество токенов, которое должен сгенерировать ИИ. Большие числа потребуют больше времени на генерацию. ИИ может остановиться до достижения лимита.",
+
+"Pick from an easy selection of curated generation presets, or configure your own.": "Выбери из простого набора отобранных пресетов генерации или настрой свой собственный.",
+
+"Randomness of sampling. High values can increase creativity but may make text less sensible. Lower values will make text more predictable but can become repetitious.": "Случайность семплирования. Высокие значения могут повысить креативность, но могут сделать текст менее осмысленным. Низкие значения сделают текст более предсказуемым, но он может стать повторяющимся.",
+
+"Used to penalize words that were already generated or belong to the context (too high causes incoherence!).": "Используется для штрафования слов, которые уже были сгенерированы или принадлежат контексту (слишком высокое значение вызывает бессвязность!).",
+
+"Used to discard unlikely text in a nucleus sampling process. Lower values will make text more predictable but can become repetitious. Set to 1 to deactivate it.": "Используется для отсеивания маловероятного текста в процессе ядерного семплирования (nucleus sampling). Низкие значения сделают текст более предсказуемым, но он может стать повторяющимся. Установите 1, чтобы деактивировать.",
+
+"Top-K Sampling. Discards all but the K most likely tokens. Set 0 to Deactivate. Range 0 to 100.": "Top-K семплирование. Отбрасывает все токены, кроме K наиболее вероятных. Установите 0 для деактивации. Диапазон от 0 до 100.",
+
+"These settings control alternative samplers configurations. They are inactive by default, you usually do not need to change them.": "Эти настройки управляют конфигурациями альтернативных семплеров. По умолчанию они неактивны, обычно их менять не требуется.",
+
+"The order by which all 7 samplers are applied, separated by commas. 0=top_k, 1=top_a, 2=top_p, 3=tfs, 4=typ, 5=temp, 6=rep_pen": "Порядок, в котором применяются все 7 семплеров, разделенный запятыми. 0=top_k, 1=top_a, 2=top_p, 3=tfs, 4=typ, 5=temp, 6=rep_pen",
+
+"Top N-Sigma. 0 to deactivate. Range 0 to 5. Not supported on Horde.": "Top N-Sigma. 0 для деактивации. Диапазон от 0 до 5. Не поддерживается на Horde.",
+
+"Do-Not-Repeat-Yourself Sampler. An advanced multi-token repetition penalty. Range controlled by Rep-Pen Range. May not be available depending on backend, not supported on Horde.": "Семплер Do-Not-Repeat-Yourself. Продвинутый штраф за повторение нескольких токенов. Диапазон контролируется параметром Rep-Pen Range. Может быть недоступен в зависимости от бэкенда, не поддерживается на Horde.",
+
+"Enables Exclude Top Choices (XTC) Sampling. May not be available depending on backend, not supported on Horde.": "Включает семплирование Exclude Top Choices (XTC). Может быть недоступно в зависимости от бэкенда, не поддерживается на Horde.",
+
+"Enables Adaptive-P Sampling. Target ranges 0.0 to 1.0, 0 to deactivate. Decay ranges from 0.0 to 1.0. Not supported on Horde.": "Включает Adaptive-P семплирование. Целевые диапазоны от 0.0 до 1.0, 0 для деактивации. Затухание (Decay) в диапазоне от 0.0 до 1.0. Не поддерживается на Horde.",
+
+"Replaces your samplers with mirostat, an alternative sampling method. May not be available depending on backend, not supported on Horde.": "Заменяет ваши семплеры на Mirostat, альтернативный метод семплирования. Может быть недоступен в зависимости от бэкенда, не поддерживается на Horde.",
+
+"Grammar Sampling (KCPP) - Allows you to constrain output to fit specific structures. Resets grammar state every generation unless Retain is checked.": "Грамматическое семплирование (KCPP) — позволяет ограничивать вывод, чтобы он соответствовал определенным структурам. Сбрасывает состояние грамматики при каждой генерации, если не отмечен пункт Retain.",
+
+"Dynamic temperature is specified by a Temperature Value and a Temperature Range. Actual temperature is allowed to be automatically adjusted dynamically between (DynaTemp ± DynaRange).": "Динамическая температура задается значением температуры (Temperature Value) и диапазоном температуры (Temperature Range). Реальная температура может автоматически динамически регулироваться в пределах (DynaTemp ± DynaRange).",
+
+"If enabled, sample N tokens from a second OpenAI Compatible endpoint first before a request. This can be useful for jailbreak purposes.": "Если включено, сначала запрашивает N токенов со второго совместимого с OpenAI эндпоинта перед основным запросом. Это может быть полезно для джейлбрейка.",
+
+"Use the AI Horde or a local KoboldCpp / Forge / A1111 instance to insert AI generated images into your story.": "Используйте AI Horde или локальный экземпляр KoboldCpp / Forge / A1111 для вставки сгенерированных ИИ изображений в вашу историю.",
+
+"How many diffusion steps to use to generate an image. More steps take longer.": "Сколько шагов диффузии использовать для генерации изображения. Больше шагов — дольше процесс.",
+
+"CFG Scale to use for image generation, affects prompt adherence.": "Масштаб CFG для генерации изображений, влияет на соответствие промпту.",
+
+"What sampler to use for image generation. Euler is recommended.": "Какой семплер использовать для генерации изображений. Рекомендуется Euler.",
+
+"Changing resolution will affect the aspect ratio used to generate. This may impact quality or memory usage.": "Изменение разрешения повлияет на соотношение сторон при генерации. Это может сказаться на качестве или использовании памяти.",
+
+"Clip skip used in some image models, -1 to disable.": "Clip skip, используемый в некоторых моделях изображений, -1 для отключения.",
+
+"Higher values lead to a more different image.": "Более высокие значения приводят к более сильно отличающемуся изображению.",
+
+"Allows the AI to generate images on its own. Basic automatically generates images at fixed intervals as you write. Smart mode lets the AI itself choose when to generate images.": "Позволяет ИИ генерировать изображения самостоятельно. Режим Basic автоматически генерирует изображения через фиксированные интервалы во время письма. Режим Smart позволяет самому ИИ выбирать, когда генерировать изображения.",
+
+"Parse user input text in instruct mode, and trigger image generation if requested (E.g. generate image of a cat)": "Анализирует текст ввода пользователя в режиме инструкций и запускает генерацию изображений, если это запрошено (например: generate image of a cat).",
+
+"If enabled, oversized imported images will be cropped to fit. If disabled, images will be letterboxed instead.": "Если включено, импортированные слишком большие изображения будут обрезаны под размер. Если выключено, изображения будут вписаны с полями (letterboxed).",
+
+"If enabled, images will be added in a new turn message instead of the existing one.": "Если включено, изображения будут добавляться в новое сообщение хода вместо текущего.",
+
+"If enabled, multiple images can stack horizontally on the same row.": "Если включено, несколько изображений могут располагаться горизонтально в одном ряду.",
+
+"Enable Text-To-Speech to have your story or chat automatically read to you. You can also generate audio clips with this enabled in the Add File menu.": "Включите Text-To-Speech, чтобы ваша история или чат зачитывались вам автоматически. Вы также можете генерировать аудиоклипы с этой функцией в меню Add File.",
+
+"Break up the narration into multiple chunks so they can be generated while speaking. Does not work well with TTS embedding or downloading.": "Разбивает повествование на несколько фрагментов, чтобы они могли генерироваться во время речи. Плохо работает с внедрением или скачиванием TTS.",
+
+"Requires KoboldCpp with Whisper model loaded. Enables Speech-To-Text voice input. Automatically listens for speech in 'On' mode (Voice Detection), or use Push-To-Talk (PTT).": "Требуется KoboldCpp с загруженной моделью Whisper. Включает голосовой ввод Speech-To-Text. Автоматически слушает речь в режиме 'On' (Voice Detection) или используйте Push-To-Talk (PTT).",
+
+"Suppress non-speech tokens (e.g. music and sounds) from transcription.": "Подавляет неречевые токены (например, музыку и звуки) при транскрипции.",
+
+"Language Code used for transcription e.g. EN.": "Код языка, используемый для транскрипции, например EN.",
+
+"How much delay to add before audio stops recording.": "Какую задержку добавить перед тем, как аудио перестанет записываться.",
+
+"Triggers alerts when a generation is completed.": "Запускает оповещения при завершении генерации.",
+
+"Allows text generation to stop early if any of the specified sequences are hit. Using default stops adds extra sequences for instruct tags and character names.": "Позволяет текстовой генерации остановиться раньше, если встретится любая из указанных последовательностей. Использование стандартных стоп-слов добавляет дополнительные последовательности для тегов инструкций и имен персонажей.",
+
+"Adds a few default stop sequences from instruct tags and chat names. Leave enabled if unsure.": "Добавляет несколько стандартных стоп-последовательностей из тегов инструкций и имен чата. Оставьте включенным, если не уверены.",
+
+"Specify a dictionary of token IDs to modify the probability of occuring. Enter OpenAI-formatted logit bias dictionary. Each key is the integer token IDs and their values are the biases (-100.0 to 100.0). Leave blank to disable.": "Укажите словарь ID токенов, чтобы изменить вероятность их появления. Введите словарь logit bias в формате OpenAI. Каждый ключ — это целое число ID токена, а значение — смещение (от -100.0 до 100.0). Оставьте пустым для отключения.",
+
+"If enabled, allows you to input strings instead of only token IDs, and tokenizes them for you.": "Если включено, позволяет вводить строки вместо только ID токенов, и токенизирует их за вас.",
+
+"Prevents specific words or phrases from being generated, either modifying model vocab or by backtracking and regenerating when they appear. If you want multiple sequences, separate them with the following delimiter: ||$||Note: If you're trying to ban a specific token by ID, you should use Logit Bias instead!": "Предотвращает генерацию определенных слов или фраз либо путем изменения словаря модели, либо путем отката и перегенерации при их появлении. Если вам нужно несколько последовательностей, разделяйте их разделителем: ||$||Note: если вы пытаетесь запретить конкретный токен по ID, лучше используйте Logit Bias!",
+
+"Allows transforming incoming text with regex patterns, modifying all matches. Replacements will be applied in sequence.": "Позволяет преобразовывать входящий текст с помощью регулярных выражений, изменяя все совпадения. Замены будут применяться последовательно.",
+
+"Allows hiding or removing thinking tags. Specifies how to handle output from reasoning models, to hide, remove, or ignore the Chain-Of-Thought.": "Позволяет скрывать или удалять теги размышлений. Определяет, как обрабатывать вывод моделей рассуждения: скрывать, удалять или игнорировать цепочку мыслей (Chain-Of-Thought).",
+
+"Think tag to match for start of CoT.": "Тег 'think', соответствующий началу CoT.",
+
+"Think tag to match for end of CoT.": "Тег 'think', соответствующий концу CoT.",
+
+"Controls the visibility of chain-of-thought thinking sections in the UI. Does not affect submitted thinking tags.": "Управляет видимостью секций цепочки мыслей в интерфейсе. Не влияет на отправляемые теги размышлений.",
+
+"Controls which thinking tags are submitted to the AI.": "Управляет тем, какие теги размышлений отправляются ИИ.",
+
+"Controls whether thinking tags are inserted or not. To Prevent thinking, set Non-Thinking instruct tags instead!": "Управляет тем, вставляются ли теги размышлений или нет. Чтобы предотвратить размышления, вместо этого установите инструкции для 'не-размышления'!",
+
+"Hides incomplete thoughts while streaming is in progress.": "Скрывает незавершенные мысли во время процесса стриминга.",
+
+"Handles cases where the closing think block exists without the opening. Note that this only visually hides the broken thinking, it will still be treated like normal context.": "Обрабатывает случаи, когда закрывающий блок think существует без открывающего. Заметьте, что это только визуально скрывает сломанные размышления, они все равно будут обрабатываться как обычный контекст.",
+
+"Configure automatic substitutions for placeholders in text.": "Настройте автоматическую замену плейсхолдеров в тексте.",
+
+"If enabled, substitutes placeholders like {{user}} and other custom placeholders here that get swapped on submit.": "Если включено, заменяет здесь плейсхолдеры вроде {{user}} и другие пользовательские плейсхолдеры, которые подменяются при отправке.",
+
+"A seed to generate randomness for {{pick}}, {{roll}} and {{random}}. Set to -1 to disable these three placeholders.": "Сид для генерации случайности для {{pick}}, {{roll}} и {{random}}. Установите -1, чтобы отключить эти три плейсхолдера.",
+
+"Functions as a negative prompt when Guidance Scale is above 1, and a positive prompt at Guidance Scale is below 1. Disabled if scale is exactly 1 or CFG prompt is blank.": "Функционирует как негативный промпт, когда Guidance Scale выше 1, и как позитивный промпт, когда Guidance Scale ниже 1. Отключается, если масштаб равен точно 1 или промпт CFG пуст.",
+
+"Allow tool calling and MCP server usage. Require Chat Completions endpoint (KoboldCpp will auto switch).": "Разрешить вызов инструментов и использование MCP-серверов. Требуется эндпоинт Chat Completions (KoboldCpp переключится автоматически).",
+
+"If disabled, you need to manually execute every tool call the AI suggests.": "Если отключено, вам нужно будет вручную выполнять каждый вызов инструмента, который предложит ИИ.",
+
+"Many public MCP servers restrict CORS, use this to proxy your requests. Uses external tools, please only use if necessary.": "Многие публичные MCP-серверы ограничивают CORS, используйте это для проксирования ваших запросов. Использует внешние инструменты, пожалуйста, используйте только при необходимости.",
+
+"If selected, attempts to connect to any MCP configured in KoboldCpp MCP bridge. Requires KoboldCpp.": "Если выбрано, пытается подключиться к любому MCP, настроенному в мосту KoboldCpp MCP. Требуется KoboldCpp.",
+
+"Connect to local or remote MCP servers to use tools there. One URL per row, optional API keys separated by commas. Caution: MCP API keys are stored in plaintext in saves!": "Подключение к локальным или удаленным MCP-серверам для использования инструментов там. Один URL на строку, необязательные API-ключи через запятую. Осторожно: API-ключи MCP хранятся в открытом виде в сохранениях!",
+
+"Search the Web for relevant information when using instruct mode. Requires WebSearch enabled KoboldCpp.": "Поиск в вебе релевантной информации при использовании режима инструкций. Требуется KoboldCpp с включенным WebSearch.",
+
+"Using this option will run a second LLM tool call to summarize context and create a more accurate search query. Slower but may be more accurate.": "Использование этой опции запустит второй вызов инструмента LLM для суммаризации контекста и создания более точного поискового запроса. Медленнее, но может быть точнее.",
+
+"The template used to generate the search query when multipass search is used": "Шаблон, используемый для генерации поискового запроса при использовании многопроходного поиска.",
+
+"Normally search results are only used once and then discarded. Enable this to retain search results for the previous 3 turns.": "Обычно результаты поиска используются один раз и затем отбрасываются. Включите это, чтобы сохранять результаты поиска на предыдущие 3 хода.",
+
+"Autosaves your current story and settings on exit, reloads when you return": "Автоматически сохраняет вашу текущую историю и настройки при выходе, перезагружает при возвращении.",
+
+"Includes your current settings when saving or sharing your story": "Включает ваши текущие настройки при сохранении или совместном использовании истории.",
+
+"If enabled, includes embedded images when saving to json file.": "Если включено, включает встроенные изображения при сохранении в json-файл.",
+
+"All images will be stored in HD. This option will result in larger save files which may be slower. Changing this setting only applies to NEW images.": "Все изображения будут храниться в HD. Эта опция приведет к увеличению размера файлов сохранений, что может замедлить работу. Изменение этого параметра применяется только к НОВЫМ изображениям.",
+
+"Prompts to input a different filename when saving file.": "Запрашивает ввод другого имени файла при сохранении.",
+
+"If enabled, allows you to select additional configurations during file load": "Если включено, позволяет выбирать дополнительные конфигурации во время загрузки файла.",
+
+"If enabled, prompts the user to choose what mode to import a character card in. If disabled, automatically picks chat mode.": "Если включено, предлагает пользователю выбрать режим импорта карточки персонажа. Если выключено, автоматически выбирает режим чата.",
+
+"Allow the End-Of-Stream (EOS) token and potentially other restricted special tokens to be generated.": "Разрешить генерацию токена конца потока (EOS) и, возможно, других ограниченных специальных токенов.",
+
+"Adds a multiplier to token limit estimations, useful if token counts are inaccurate. Influences text truncation. Higher values increases token allowance.": "Добавляет множитель к оценкам лимита токенов, полезно, если подсчет токенов неточен. Влияет на обрезку текста. Более высокие значения увеличивают допустимое количество токенов.",
+
+"If enabled, renders special tags like EOS and padding tokens. Not recommended.": "Если включено, отрисовывает специальные теги, такие как EOS и токены заполнения (padding). Не рекомендуется.",
+
+"If enabled, request top 5 alternative token log-probabilities for each generated token. Incurs an overhead.": "Если включено, запрашивает топ-5 альтернативных логарифмических вероятностей токенов для каждого сгенерированного токена. Создает дополнительную нагрузку.",
+
+"Runs in background and prevents the browser from suspending KoboldAI Lite by playing a silent audio track. This setting cannot be saved.": "Работает в фоновом режиме и предотвращает приостановку браузером KoboldAI Lite, проигрывая бесшумную аудиодорожку. Эта настройка не сохраняется.",
+
+"Allows you to load third-party user created mods (caution).": "Позволяет загружать сторонние моды, созданные пользователями (осторожно).",
+
+"Does not insert instruct placeholders, only uses raw tags": "Не вставляет плейсхолдеры инструкций, использует только сырые теги.",
+
+"Allows you to change the connected custom endpoint at runtime even in local mode.": "Позволяет менять подключенный пользовательский эндпоинт во время работы даже в локальном режиме.",
+
+"Do not show any warnings for closing or overwriting unsaved work (caution!)": "Не показывать предупреждения при закрытии или перезаписи несохраненной работы (осторожно!).",
+
+"Do not compress embedded audio files. Might crash on big files! (caution!)": "Не сжимать встроенные аудиофайлы. Может привести к вылету на больших файлах! (осторожно!)",
+
+"Sends raw KoboldCppAutomatic AutoGuess tags to third party APIs. (e.g. Horde) Be warned, you better hope they handle them well internally...": "Отправляет необработанные теги KoboldCpp Automatic AutoGuess сторонним API (например, Horde). Предупреждаем: лучше надеяться, что они умеют правильно обрабатывать их внутри себя...",
+
+"Adds extra data to the savefile for better legacy support. Will make your savefile much larger.": "Добавляет дополнительные данные в файл сохранения для лучшей поддержки старых версий. Сделает ваш файл сохранения намного больше.",
+
+"Prevent the CORS proxy from streaming, if applicable.": "Предотвратить стриминг через CORS-прокси, если применимо.",
+
+"This option picks a suitable AI model based on the selected scenario. If no text model is currently selected, an appropriate one will be automatically picked for you.": "Эта опция выбирает подходящую модель ИИ на основе выбранного сценария. Если текстовая модель сейчас не выбрана, подходящая будет подобрана автоматически.",
+
+"Adds a character template to memory while creating the character instead.": "Вместо этого добавляет шаблон персонажа в память при создании персонажа.",
+
+"You need an API key to use AI Horde to generate text. Get one at https://aihorde.net/register or use the anonymous key 0000000000.": "Для использования AI Horde для генерации текста вам нужен API-ключ. Получите его на https://aihorde.net/register или используйте анонимный ключ 0000000000.",
+
+"These are the models currently provided by AI Horde volunteers.": "Это модели, предоставляемые волонтерами AI Horde в данный момент.",
+
+"This option explicitly assigns worker IDs, fixed based on the current workers available at model selection time.": "Эта опция явно назначает ID воркеров, фиксированных на основе текущих доступных воркеров в момент выбора модели.",
+
+"Attempts to use a CORS proxy to bypass CORS restrictions. Only use this if normal connections fail. Only works on public internet APIs.": "Пытается использовать CORS-прокси для обхода ограничений CORS. Используйте это только если обычные соединения не работают. Работает только с публичными интернет-API.",
+
+"Usually OpenAI Compatible APIs end with /v1. If they do not, uncheck this box.": "Обычно совместимые с OpenAI API заканчиваются на /v1. Если это не так, снимите эту галочку.",
+
+"Send extra non-standard samplers like Min-P, Top-K and Top-A.": "Отправлять дополнительные нестандартные семплеры, такие как Min-P, Top-K и Top-A.",
+
+"Unique name for the preset.": "Уникальное имя пресета.",
+
+"Short description.": "Краткое описание.",
+
+"Number of tokens to sample. Set to 0 to disable.": "Количество токенов для семплирования. Установите 0 для отключения.",
+
+"Model name to use in the API": "Имя модели, используемое в API",
+
+"URL of second OpenAI Compatible Endpoint": "URL второго совместимого с OpenAI эндпоинта",
+
+"Do not reset grammar on generate. May not work with multiple users.": "Не сбрасывать грамматику при генерации. Может не работать с несколькими пользователями.",
+
+"Launch additional specialized GUIs.": "Запуск дополнительных специализированных графических интерфейсов.",
+
+"What scheduler to use for image generation.": "Какой планировщик использовать для генерации изображений.",
+
+"Allows you to build your own tools as Javascript functions (caution).": "Позволяет вам создавать собственные инструменты в виде функций Javascript (осторожно!).",
+
+"When checked, you must manually specify the JSON schema for the tool's input arguments.": "При установленном флажке необходимо вручную указать схему JSON для входных аргументов инструмента."
+    };
+
+    // Функция для очистки текста от лишних пробелов, табов и переносов (при сравнении)
+    const normalizeText = (text) => {
+					return text.toLowerCase() // Приводим текст в нижний регистр
+					.replace(/\u00a0/g, ' ')  // Заменяем неразрывные пробелы на обычные
+					.replace(/\s+/g, ' ')
+					.trim();
+					};
+
+    // Находим все элементы с классом helptext
+    const helpElements = document.querySelectorAll('.helptext');
+
+    // Создаем новый объект, где все ключи уже нормализованы
+    const normalizedTranslations = {};
+    for (let key in helpTextTranslations) {
+        normalizedTranslations[normalizeText(key)] = helpTextTranslations[key];
+    }
+
+    helpElements.forEach(el => {
+        // Берем сырой текст для отладки
+        const rawText = el.textContent;
+        const originalText = normalizeText(rawText);
+        
+        if (normalizedTranslations[originalText]) {
+            el.textContent = normalizedTranslations[originalText];
+        } else {
+            // выводим коды символов каждого знака!
+            let charCodes = "";
+            for (let i = 0; i < rawText.length; i++) {
+                charCodes += rawText.charCodeAt(i) + " ";
+            }
+            
+            console.warn("--- ОШИБКА ПЕРЕВОДА -- И проверь регистр букв --");
+            console.warn("Текст в HTML: ['", rawText, "']");
+            console.warn("После нормализации: ['", originalText, "']");
+            // console.warn("Коды символов этого текста: ", charCodes);
+        }
+    });
+});
+</script>
+<!-- END RUSSIAN TRANSLATION -->
 </body>
 </html>
