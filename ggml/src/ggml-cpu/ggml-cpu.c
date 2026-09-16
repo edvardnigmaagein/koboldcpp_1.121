@@ -3395,26 +3395,10 @@ static bool ggml_thread_apply_priority(int32_t prio) {
 
 #ifndef USE_FAILSAFE
     if (prio != GGML_SCHED_PRIO_LOW) {
-        // Tell Windows that this thread should not be throttled (needs its own CPU core).
-        // Newer Windows 11 versions aggressively park (offline) CPU cores and often place
-        // all our threads onto the first 4 cores which results in terrible performance with
-        // n_threads > 4
-        #if _WIN32_WINNT >= 0x602
-        PROCESS_POWER_THROTTLING_STATE t;
-        ZeroMemory(&t, sizeof(t));
-        t.Version     = PROCESS_POWER_THROTTLING_CURRENT_VERSION;
-        t.ControlMask = PROCESS_POWER_THROTTLING_EXECUTION_SPEED;
-        t.StateMask   = 0;
-
-        if (!SetProcessInformation(GetCurrentProcess(), ProcessPowerThrottling, &t, sizeof(t))) {
-            // GGML_LOG_DEBUG("failed to disable process power throttling %d : (%d)\n", prio, (int) GetLastError());
-            return false;
-        }
-        #endif
+        return true; 
     }
 #else
-    if(!powethrottlemsgshown)
-    {
+    if(!powethrottlemsgshown) {
         powethrottlemsgshown = true;
         printf("\nPower Throttling skipped in compatibility mode.\n");
     }
